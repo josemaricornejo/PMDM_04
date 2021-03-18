@@ -11,7 +11,7 @@
         android:layout_height="match_parent"
         android:layout_weight="10">
 
-        <include layout="@layout/view_lienzo"/>
+        <include layout="@layout/view_display"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -25,7 +25,7 @@
         android:layout_weight="1">
 
         <Button
-            android:id="@+id/btRed"
+            android:id="@+id/button2"
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:layout_marginStart="30dp"
@@ -34,12 +34,12 @@
             android:backgroundTint="#ff0000"
             android:onClick="redColor"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/btGreen"
+            app:layout_constraintEnd_toStartOf="@+id/button"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/btGreen"
+            android:id="@+id/button"
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:layout_marginStart="8dp"
@@ -47,12 +47,24 @@
             android:backgroundTint="#58FF33"
             android:onClick="greenColor"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/btRed"
+            app:layout_constraintStart_toEndOf="@+id/button2"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.511" />
 
         <Button
-            android:id="@+id/btYellow"
+            android:id="@+id/button3"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/button_design"
+            android:backgroundTint="#F7FF33"
+            android:onClick="redColor"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/button"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.511" />
+
+        <Button
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:layout_marginStart="8dp"
@@ -60,13 +72,11 @@
             android:backgroundTint="#F7FF33"
             android:onClick="yellowColor"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/btGreen"
+            app:layout_constraintStart_toEndOf="@+id/button"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.511" />
 
-
         <Button
-            android:id="@+id/btBlue"
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:layout_marginStart="8dp"
@@ -74,29 +84,17 @@
             android:backgroundTint="#338BFF"
             android:onClick="blueColor"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/btYellow"
+            app:layout_constraintStart_toEndOf="@+id/button3"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.511" />
 
         <Button
-            android:id="@+id/btStart"
             android:layout_width="35dp"
             android:layout_height="35dp"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="68dp"
             android:onClick="starBrush"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/btBlue"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.513" />
-
-        <Button
-            android:id="@+id/btFace"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:layout_marginStart="8dp"
-            android:onClick="faceBrush"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/btStart"
+            app:layout_constraintStart_toEndOf="@+id/button3"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.513" />
 

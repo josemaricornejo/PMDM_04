@@ -7,6 +7,8 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
@@ -40,7 +42,7 @@ public class Lienzo extends View {
     private List<Vector> positionsStar = new ArrayList<Vector>(100);
     private List<Vector> positionsFace = new ArrayList<Vector>(100);
 
-
+    private static Canvas canvas;
 
 
     public Lienzo(Context context) {
@@ -59,7 +61,7 @@ public class Lienzo extends View {
     }
 
     //Iniciamos los pinceles
-    private void init(Context context){
+    private void init(Context context) {
         paint_brush.setAntiAlias(true);
         paint_brush.setColor(Color.BLACK);
         paint_brush.setStyle(Paint.Style.STROKE);
@@ -117,28 +119,26 @@ public class Lienzo extends View {
         switch (action) {
             //Cuando se pulsa con el dedo
             case MotionEvent.ACTION_DOWN:
-                path.moveTo(posX,posY);
+                path.moveTo(posX, posY);
                 invalidate();
                 return true;
             case MotionEvent.ACTION_MOVE:
 
-            if(brush){
-                path.lineTo(posX,posY);
-                pathList.add(path);
-                colorList.add(current_brush);
+                if (brush) {
+                    path.lineTo(posX, posY);
+                    pathList.add(path);
+                    colorList.add(current_brush);
 
-            }
+                }
 
-            if(start) {
+                if (start) {
 
-                positionsStar.add(new Vector(posX - mBitmapStarDimensions.x / 2, posY - mBitmapStarDimensions.y / 2));
-            }
+                    positionsStar.add(new Vector(posX - mBitmapStarDimensions.x / 2, posY - mBitmapStarDimensions.y / 2));
+                }
 
-            if(face){
-                positionsFace.add(new Vector(posX - mBitmapFaceDimensions.x / 2, posY - mBitmapFaceDimensions.y / 2));
-            }
-
-
+                if (face) {
+                    positionsFace.add(new Vector(posX - mBitmapFaceDimensions.x / 2, posY - mBitmapFaceDimensions.y / 2));
+                }
 
 
                 invalidate();
@@ -147,9 +147,9 @@ public class Lienzo extends View {
         return true;
     }
 
+    public static void deleteCanvas() {
 
-
-
+    }
 
 
     //En este método colocamos lo que vamos a dibujar en el linezo.
@@ -157,38 +157,24 @@ public class Lienzo extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
+        this.canvas = canvas;
+
         //pinceles circulo
         for (int i = 0; i < pathList.size(); i++) {
             paint_brush.setColor(colorList.get(i));
-            canvas.drawPath(pathList.get(i), paint_brush);
+            this.canvas.drawPath(pathList.get(i), paint_brush);
             invalidate();
         }
 
-            //pincel estrella
-            for (Vector pos : positionsStar) {
-                canvas.drawBitmap(mBitmapStar, pos.x, pos.y, null);
-            }
+        //pincel estrella
+        for (Vector pos : positionsStar) {
+            this.canvas.drawBitmap(mBitmapStar, pos.x, pos.y, null);
+        }
 
         //pincel cara
         for (Vector pos : positionsFace) {
-            canvas.drawBitmap(mBitmapFace, pos.x, pos.y, null);
+            this.canvas.drawBitmap(mBitmapFace, pos.x, pos.y, null);
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     }

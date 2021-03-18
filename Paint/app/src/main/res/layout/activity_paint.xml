@@ -6,23 +6,24 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".PaintActivity">
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="10">
 
-        <include layout="@layout/view_lienzo"/>
+        <include layout="@layout/view_lienzo" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="414dp"
         android:layout_height="80dp"
+        android:layout_weight="1"
         android:background="@drawable/tools_design"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_weight="1">
+        app:layout_constraintStart_toStartOf="parent">
 
         <Button
             android:id="@+id/btRed"
@@ -102,5 +103,31 @@
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btBorrar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:layout_weight="1"
+            android:onClick="onClickBorrar"
+            android:text="BORRAR" />
+
+        <Button
+            android:id="@+id/btVolver"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:layout_weight="1"
+            android:onClick="onClickVolver"
+            android:text="VOLVER" />
+
+
+    </LinearLayout>
 
 </LinearLayout>
